@@ -1,0 +1,36 @@
+<div class="booking-container">
+  <h2>Időpont Foglalás</h2>
+  
+  <mat-card class="booking-card">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Válassz dátumot</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" [min]="minDate" (dateChange)="updateAvailableTimes()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    
+      <h3>Elérhető időpontok:</h3>
+      <div class="time-grid">
+          <button 
+            *ngFor="let time of availableTimes"
+            [disabled]="time.disabled"
+            (click)="selectTime(time.time)"
+            [class.selected]="selectedTime === time.time">
+            {{ time.time }}
+          </button>
+        </div>
+        
+    
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Szolgáltatás</mat-label>
+          <mat-select [(ngModel)]="selectedServiceId">
+            <mat-option *ngFor="let service of services" [value]="service.id">
+              {{ service.name }} - {{ service.price | priceFormat }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+      <button mat-raised-button class="full-width" (click)="bookAppointment()">Foglalás</button>
+    </mat-card>
+    
+</div>

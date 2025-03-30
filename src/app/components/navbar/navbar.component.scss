@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #6a1b9a !important;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  .mat-icon{
+    color: white;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .nav-buttons {
+    display: flex;
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-buttons {
+      display: none;
+    }
+
+    .mobile-toggle {
+      display: block;
+      margin-left: auto;
+    }
+  }
+}
+
+.mobile-sidenav {
+  width: 220px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}

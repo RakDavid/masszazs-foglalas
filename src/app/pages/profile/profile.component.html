@@ -1,0 +1,37 @@
+<div class="profile-container">
+        <h2>Profil adatok</h2>
+        <div class="profile-info">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Név</mat-label>
+                <input matInput [(ngModel)]="userName">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>E-mail</mat-label>
+                <input matInput [value]="userEmail | emailMask" disabled>
+              </mat-form-field>
+    
+            <button mat-raised-button color="primary" class="full-width" (click)="saveUserData()">Mentés</button>
+        </div>
+            
+        <h2>Közelgő időpontok</h2>
+        <div class="bookings-list">
+          <app-booking-card
+            *ngFor="let booking of upcomingBookings"
+            [booking]="booking"
+            (edit)="editBooking(booking)"
+            (cancel)="cancelBooking(booking.id)"
+            (viewDetails)="viewDetails(booking)">
+          </app-booking-card>
+        </div>
+        
+        <h2>Korábbi időpontok</h2>
+        <div class="bookings-list past">
+          <app-booking-card
+            *ngFor="let booking of pastBookings"
+            [booking]="booking"
+            [disabled]="true"
+            (viewDetails)="viewDetails(booking)">
+          </app-booking-card>
+        </div>
+</div>

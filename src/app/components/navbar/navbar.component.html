@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="mobile-sidenav" mode="over" position="end">
+    <button mat-button routerLink="/" (click)="sidenav.close()">Kezdőlap</button>
+    <button mat-button routerLink="/massage-services" (click)="sidenav.close()">Szolgáltatások</button>
+    <button mat-button routerLink="/booking" (click)="sidenav.close()">Foglalás</button>
+    <ng-container *ngIf="!isLoggedIn">
+      <button mat-button routerLink="/register" (click)="sidenav.close()">Regisztráció</button>
+      <button mat-button routerLink="/login" (click)="sidenav.close()">Bejelentkezés</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <button mat-button routerLink="/profile" (click)="sidenav.close()">Profil</button>
+      <button mat-button (click)="logout(); sidenav.close()">Kilépés</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && (isAdmin$ | async)">
+      <button mat-button routerLink="/admin" (click)="sidenav.close()">Admin felület</button>
+    </ng-container>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary" class="navbar">
+    <span class="logo">Masszázs Szalon</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="sidenav.toggle()" class="mobile-toggle">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="nav-buttons">
+      <button mat-button routerLink="/">Kezdőlap</button>
+      <button mat-button routerLink="/massage-services">Szolgáltatások</button>
+      <button mat-button routerLink="/booking">Foglalás</button>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-button routerLink="/register">Regisztráció</button>
+        <button mat-button routerLink="/login">Bejelentkezés</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <button mat-button routerLink="/profile">Profil</button>
+        <button mat-button (click)="logout()">Kilépés</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && (isAdmin$ | async)">
+        <button mat-button routerLink="/admin">Admin felület</button>
+      </ng-container>
+    </div>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
