@@ -8,6 +8,7 @@ A helyi fejlesztői szerver elindításához futtasd:
 
 ```bash
 ng serve
+```
 
 Ha a szerver elindult, nyisd meg a böngésződet, és navigálj a 'http://localhost:4200/' címre.
 Az alkalmazás automatikusan újratöltődik, amikor módosítod a forrásfájlokat.
