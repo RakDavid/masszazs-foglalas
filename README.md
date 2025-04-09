@@ -17,4 +17,6 @@ Az admin felhasználóba bejelentkezni a következő adatokkal tudsz:
 admin@gmail.com
 admin1
 
+A projekt elérhető online is a következő linken: 'https://rak-david-massage-bookin-502d8.web.app'
+Firebase által hostolva 
 
